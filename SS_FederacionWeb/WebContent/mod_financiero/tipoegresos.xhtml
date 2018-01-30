@@ -1,44 +1,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Tipo Egresos</title>
-</h:head>
-<body style="font-size: 70%">
-	<h:form id="form1">
-		<h:commandLink action="index" value="Ir al inicio..." />
-	</h:form>
-	<p:panel header="Ingrese nuevo tipo de Egreso">
-		<h:form>
-			<p:panelGrid columns="2" id="panelGrid1">
-				<h:outputText value="NOMBRE:" />
-				<p:inputText value="#{financieroController.nombre}"></p:inputText>
-				<h:outputText value="DESCRIPCION:" />
-				<p:inputText value="#{financieroController.descripcion}"></p:inputText>
-			</p:panelGrid>
 
-			<p:commandButton value="Insertar"
-				action="#{financieroController.actionInsertarTipoEgreso()}"
-				update=":form2,panelGrid1"></p:commandButton>
+
+<h:head></h:head>
+<body>
+
+	<p:growl autoUpdate="true"></p:growl>
+	<p:panel header="TIPO DE EGRESOS">
+		<h:form id="form1">
+			<p:panelGrid columns="2">
+
+				<h:outputText value="Ingresar Nombre"></h:outputText>
+				<p:inputText value="#{financieroController.nombre}">
+					<f:validateLength></f:validateLength>
+				</p:inputText>
+				<h:outputText value="Ingrese Descripción"></h:outputText>
+				<p:inputText maxlength="20"
+					value="#{financieroController.descripcion}">
+				</p:inputText>
+
+				<p:commandButton value="Agregar" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					actionListener="#{financieroController.actionInsertarTipoEgreso()}"></p:commandButton>
+				<p:messages autoUpdate="true"></p:messages>
+
+			</p:panelGrid>
+		</h:form>
+		<h:form id="form2">
+			<p:panel header="LISTA DE TIPOS DE EGRESOS">
+				<p:dataTable value="#{financieroController.lista}" var="p"
+					id="tabla1">
+					<p:column headerText="NOMBRE">
+						<h:outputText value="#{p.nombre}" />
+					</p:column>
+					<p:column headerText="DESCRIPCIÓN">
+						<h:outputText value="#{p.descripcion}" />
+					</p:column>
+				</p:dataTable>
+
+			</p:panel>
 		</h:form>
 	</p:panel>
-	<h:form id="form2">
-		<p:messages></p:messages>
-		<p:dataTable border="1" value="#{financieroController.lista}"
-			var="p" paginator="true" rows="6" id="tabla1">
-			<p:column headerText="CODIGO">
-				<h:outputText value="#{p.codTipoEgreso}"></h:outputText>
-			</p:column>
-			<p:column headerText="NOMBRE">
-				<h:outputText value="#{p.nombre}"></h:outputText>
-			</p:column>
-			<p:column headerText="DESCRIPCION">
-				<h:outputText value="#{p.descripcion}"></h:outputText>
-			</p:column>
-		</p:dataTable>
-	</h:form>
 </body>
 </html>

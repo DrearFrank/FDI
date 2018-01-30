@@ -20,7 +20,7 @@ public class FinancieroController {
 	@EJB
 	private ManagerFinanciero managerFinanciero;
 
-	private int codTipoEgreso;
+	private Integer codTipoEgreso;
 	private String nombre;
 	private String descripcion;
 
@@ -66,14 +66,13 @@ public class FinancieroController {
 		this.managerFinanciero = managerFinanciero;
 	}
 
-	public int getCodTipoEgreso() {
+
+	public Integer getCodTipoEgreso() {
 		return codTipoEgreso;
 	}
-
-	public void setCodTipoEgreso(int codTipoEgreso) {
+	public void setCodTipoEgreso(Integer codTipoEgreso) {
 		this.codTipoEgreso = codTipoEgreso;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
