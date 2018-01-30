@@ -3,48 +3,42 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
-
-<h:head></h:head>
-<body>
-	<p:growl autoUpdate="true"></p:growl>
-	<p:panel header="Tipo Egresos">
-		<h:form id="form1">
-			<p:panelGrid columns="2">
-
-				<h:outputText value="Cod_Tipo Egreso"></h:outputText>
-				<p:inputText value="#{controllerTipoEgreso.codTipoEgreso}" id="codTipoEgreso">
-				</p:inputText>
-				<h:outputText value="Nombre"></h:outputText>
-				<p:inputText maxlength="20" value="#{controllerTipoEgreso.nombre}">
-				</p:inputText>
-				<h:outputText value="Descripción"></h:outputText>
-				<p:inputText maxlength="20" value="#{controllerTipoEgreso.descripcion}">
-				</p:inputText>
-				<p:commandButton value="Validar" action="#{controllerTipoEgreso.actionInsertarTipoEgreso()}"></p:commandButton>
-			<p:messages autoUpdate="true"></p:messages>
-
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Tipo Egresos</title>
+</h:head>
+<body style="font-size: 70%">
+	<h:form id="form1">
+		<h:commandLink action="index" value="Ir al inicio..." />
+	</h:form>
+	<p:panel header="Ingrese nuevo tipo de Egreso">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="NOMBRE:" />
+				<p:inputText value="#{financieroController.nombre}"></p:inputText>
+				<h:outputText value="DESCRIPCION:" />
+				<p:inputText value="#{financieroController.descripcion}"></p:inputText>
 			</p:panelGrid>
-		</h:form>
-		<h:form id="form2">
-			<p:panel header="LISTA DE TIPOS DE EGRESOS">
-				<p:dataTable value="#{controllerAnimalito.lista}" var="a"
-					id="tabla1">
-					<p:column headerText="CODTIPO EGRESOS">
-						<h:outputText value="#{a.nombre}" />
-					</p:column>
-					<p:column headerText="NOMBRE">
-						<h:outputText value="#{a.color}" />
-					</p:column>
-					<p:column headerText="DESCRIPCIÓN">
-						<h:outputText value="#{a.edad}" />
-					</p:column>
-				</p:dataTable>
 
-			</p:panel>
+			<p:commandButton value="Insertar"
+				action="#{financieroController.actionInsertarTipoEgreso()}"
+				update=":form2,panelGrid1"></p:commandButton>
 		</h:form>
 	</p:panel>
-
+	<h:form id="form2">
+		<p:messages></p:messages>
+		<p:dataTable border="1" value="#{financieroController.lista}"
+			var="p" paginator="true" rows="6" id="tabla1">
+			<p:column headerText="CODIGO">
+				<h:outputText value="#{p.codTipoEgreso}"></h:outputText>
+			</p:column>
+			<p:column headerText="NOMBRE">
+				<h:outputText value="#{p.nombre}"></h:outputText>
+			</p:column>
+			<p:column headerText="DESCRIPCION">
+				<h:outputText value="#{p.descripcion}"></h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
 </body>
 </html>
-

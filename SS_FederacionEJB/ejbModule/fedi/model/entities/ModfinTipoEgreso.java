@@ -16,7 +16,7 @@ public class ModfinTipoEgreso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MODFIN_TIPO_EGRESO_CODTIPOEGRESO_GENERATOR", sequenceName="SEQ_MODFIN_TIPO_EGRESO",allocationSize=1)
+	@SequenceGenerator(name="MODFIN_TIPO_EGRESO_CODTIPOEGRESO_GENERATOR", sequenceName="SEQ_TIPOEGRESOS",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODFIN_TIPO_EGRESO_CODTIPOEGRESO_GENERATOR")
 	@Column(name="cod_tipo_egreso", unique=true, nullable=false)
 	private Integer codTipoEgreso;
