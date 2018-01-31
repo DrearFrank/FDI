@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 
+
 /**
  * The persistent class for the modad_categoria database table.
  * 
@@ -16,7 +17,7 @@ public class ModadCategoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MODAD_CATEGORIA_CODCATE_GENERATOR", sequenceName="SEQ_MODAD_CATEGORIA",allocationSize=1)
+	@SequenceGenerator(name="MODAD_CATEGORIA_CODCATE_GENERATOR", sequenceName="SEQ_MODAD_CATEGORIA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODAD_CATEGORIA_CODCATE_GENERATOR")
 	@Column(name="cod_cate", unique=true, nullable=false)
 	private Integer codCate;

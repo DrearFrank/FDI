@@ -17,6 +17,8 @@ public class ControllerRol {
 	private List<ModadRole> listrol;
 
 	private Integer codRoles;
+	private String nombrerol;
+	private String descripcionrol;
 
 	@EJB
 	private ManagerAdministrador managerol;
@@ -71,7 +73,6 @@ public class ControllerRol {
 		this.descripcionrol = descripcionrol;
 	}
 
-	private String nombrerol;
-	private String descripcionrol;
+
 
 }

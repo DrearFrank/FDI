@@ -3,11 +3,13 @@ package fedi.model.util;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 /**
  * Clase utilitaria para la capa modelo
  * @author mrea
  *
  */
+
 public class ModelUtil {
 	/**
 	 * Verifica si una cadena es igual a null o tiene longitud igual a cero (0).
