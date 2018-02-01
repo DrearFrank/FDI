@@ -12,24 +12,40 @@
 </h:form>
 
 	<p:panel header="Ingrese datos de Escenarios Deportivas">
-		<h:form>
+		<h:form id="form1">
 		<h3>INGRESO DE NUEVOS ESCENARIOS DEPORTIVOS</h3>
 			<h:panelGrid columns="2">
 				<h:outputText value="Nombre Escenario Deportivo" />
-				<p:inputText required="true" requiredMessage="debe ingresar nombre del escenario"/>
+				<p:inputText value="#{controllerLugar.nombre}" requiredMessage="debe ingresar nombre del escenario"/>
 				<h:outputText value="Direccion:" />
-				<p:inputText required="true" requiredMessage="debe ingresar direccion"/>
+				<p:inputText value="#{controllerLugar.direccion}" requiredMessage="debe ingresar direccion"/>
 			<h:outputText value="Especificacion:" />
-				<p:inputText required="true" requiredMessage="Especificacion"/>
-			
-	
-
-			
+				<p:inputText value="#{controllerLugar.descripcion}" required="true" requiredMessage="Especificacion"/>
+						
 				<br/>
-				<p:commandButton value="Registrar"></p:commandButton>
+				<p:commandButton value="Registrar" icon="ui-icon-disk"
+				actionListener="#{controllerLugar.actionInsertarLugar()}" update="@form,:form2:tabla1"></p:commandButton>
 		
 				<p:messages autoUpdate="true"></p:messages>
 			</h:panelGrid>
+		</h:form>
+						<h:form id="form2">
+			<p:panel header="LISTA DE TIPOS DE Lugares">
+				<p:dataTable value="#{controllerLugar.lista}" var="p"
+					id="tabla1">
+					<p:column headerText="NOMBRE">
+						<h:outputText value="#{p.nombre}" />
+					</p:column>
+					<p:column headerText="DIRECCION">
+						<h:outputText value="#{p.direccion}" />
+					</p:column>
+					<p:column headerText="DESCRIPCIÓN">
+						<h:outputText value="#{p.descripcion}" />
+					</p:column>
+					
+				</p:dataTable>
+
+			</p:panel>
 		</h:form>
 
 	</p:panel>

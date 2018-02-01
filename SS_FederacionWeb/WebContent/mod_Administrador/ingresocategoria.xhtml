@@ -7,19 +7,35 @@
 
 <h:head></h:head>
 <body>
-
+ <p:growl autoUpdate="true"></p:growl>
 	<p:panel header="Ingreso de Categorias Nuevas">
-		<h:form>
+		<h:form id="form1">
 		<h3>INGRESO DE NUEVAS CATEGORIAS</h3>
 			<h:panelGrid columns="2">
 				<h:outputText value="Nombre_Categoria" />
-				<p:inputText required="true" requiredMessage="debe ingresar nombre Categoria"/>
+				<p:inputText value="#{controllercategoria.nombre}" required="true" requiredMessage="debe ingresar nombre Categoria"/>
 				<h:outputText value="Descripcion_Categoria" />
-				<p:inputText required="true" requiredMessage="debe ingresar descripcion de categoria"/>
+				<p:inputText value="#{controllercategoria.descripcion}" required="true" requiredMessage="debe ingresar descripcion de categoria"/>
 		
-				<p:commandButton value="Registrar"></p:commandButton>
+				<p:commandButton value="Registrar" icon="ui-icon-disk"
+				actionListener="#{controllercategoria.actionInsertarCategoria()}" update="@form,:form2:tabla1"
+				></p:commandButton>
 								<p:messages autoUpdate="true"></p:messages>
 			</h:panelGrid>
+		</h:form>
+				<h:form id="form2">
+			<p:panel header="LISTA DE TIPOS DE CATEGORIAS">
+				<p:dataTable value="#{controllercategoria.lista}" var="p"
+					id="tabla1">
+					<p:column headerText="NOMBRE">
+						<h:outputText value="#{p.nombreCate}" />
+					</p:column>
+					<p:column headerText="DESCRIPCIÓN">
+						<h:outputText value="#{p.descripcionCate}" />
+					</p:column>
+				</p:dataTable>
+
+			</p:panel>
 		</h:form>
 		<p:commandButton value="Regresar al Menú" action="Menu"></p:commandButton>
 	</p:panel>

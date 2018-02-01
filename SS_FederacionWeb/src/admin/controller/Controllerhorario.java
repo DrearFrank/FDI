@@ -1,4 +1,4 @@
-package fedi.controller;
+package admin.controller;
 
 import java.util.List;
 
@@ -6,13 +6,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 import fedi.model.manager.ManagerAdministrador;
 import fedi.model.entities.ModadRole;
 
 @ManagedBean
 @SessionScoped
-public class ControllerRol {
+public class Controllerhorario {
 
 	private List<ModadRole> listrol;
 
@@ -25,16 +24,7 @@ public class ControllerRol {
 
 	@PostConstruct
 
-	public void iniciar() {
-
-		listrol = managerol.findAllRoles();
-	}
-
-	public void actionListenerReset() {
-
-		listrol = managerol.findAllRoles();
-	}
-
+	
 	public void actionListenerCargar(ModadRole rol) {
 		codRoles = rol.getCodRoles();
 		nombrerol = rol.getNombreRoles();
