@@ -1,86 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head></h:head>
-<body>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Ingreso al sistema</title>
+</h:head>
+
+<h:body style="font-size:80%">
+<div style="background-image: url('negro.jpg'); width: 500; height: 100; ">
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 
 
+<br></br>
 
 
-	<div align="center">
-		<p:panel header="Visitante" style="width:500px">
-			<p:messages autoUpdate="true"></p:messages>
-			<h:panelGrid columns="2">
-				<h:form id="form2">
+<div align="center"  >
 
 
-					<p:column headerText="Entrar como Visitante" style="width:50px">
-						<p:commandButton icon="ui-icon-search"
-							value="Entrar como visitante" action="visitante"></p:commandButton>
-					</p:column>
+<p:panel header="LOGIN PARA USARIOS" style="width:350px">
+<p:growl autoUpdate="true"></p:growl>
 
 
-				</h:form>
-			</h:panelGrid>
+<h:form>
+<p:panelGrid columns="2"  >
+				<h:outputText value="Código de usuario:" />
+				<p:inputText value="#{beanLogin.codigoUsuario}"
+					required="true" size="20" maxlength="20"
+					requiredMessage="Debe ingresar su codigo de usuario." />
+				<h:outputText value="Clave:" />
+				<p:password value="#{beanLogin.clave}" required="true"
+					size="10" maxlength="10"
+					requiredMessage="Debe ingresar su contraseña." />
+				<p:commandButton value="Ingresar"
+					action="#{beanLogin.accederSistema()}" update="mensajes"/>
+				<p:messages id="mensajes" />
+			</p:panelGrid>
+</h:form>
+</p:panel>
 
 
-
-		</p:panel>
-
-
-	</div>
-
-	<div align="center">
-
-
-		<p:panel header="LOGIN" style="width:500px">
-			<p:growl autoUpdate="true"></p:growl>
+</div>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 
 
-			<h:form>
-				<h:panelGrid columns="2">
-					<h:outputText value="Id de usuario:" />
-					<p:inputText value="#{controllerUsuario.idUsuario}" required="true"></p:inputText>
-					<h:outputText value="clave:" />
-					<p:password value="#{controllerUsuario.clave}"></p:password>
-					<p:commandButton value="Ingresar" icon="ui-icon-key"
-						action="#{controllerUsuario.actionLogin()}"></p:commandButton>
-				</h:panelGrid>
-			</h:form>
-		</p:panel>
-
-		<p:panel header="NUEVOS USUARIOS" style="width:500px">
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 
 
-
-			<h:outputText value="Si es un nuevo usuario, debe registrarse:" />
-			<h:form>
-
-				<p:panelGrid columns="2">
-					<h:outputText value="ID de usuario:" />
-					<p:inputText value="#{controllerUsuario.idUsuario}" required="true"
-						requiredMessage="Debe ingresar un ID de usuario." maxlength="10"></p:inputText>
-					<h:outputText value="Contraseña:" />
-					<p:password value="#{controllerUsuario.clave}" required="true"
-						maxlength="10" size="10"></p:password>
-					<h:outputText value="Confirmación de clave:" />
-					<p:password value="#{controllerUsuario.confirmacionClave}"
-						required="true" maxlength="10" size="10"></p:password>
-					<h:outputText value="correo:" />
-					<p:inputText value="#{controllerUsuario.correo}" required="true"
-						requiredMessage="Debe ingresar un correo."></p:inputText>
-					<p:commandButton value="Registrar nuevo Usuarios"
-						icon="ui-icon-disk"
-						action="#{controllerUsuario.actionRegistrarBlogger()}"></p:commandButton>
-
-
-				</p:panelGrid>
-			</h:form>
-		</p:panel>
-	</div>
-</body>
+<br></br>
+</div>
+</h:body>
 
 </html>
+
+
+	
