@@ -2,6 +2,7 @@ package fedi.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class ModadDeportista implements Serializable {
 	@Column(name="apellidos_dep", nullable=false, length=50)
 	private String apellidosDep;
 
-	@Column(name="contrasena_dep", length=50)
+	@Column(name="contrasena_dep", nullable=false, length=50)
 	private String contrasenaDep;
 
 	@Column(name="correo_elec_dep", length=100)
@@ -31,10 +32,12 @@ public class ModadDeportista implements Serializable {
 	@Column(name="direccion_dep", length=100)
 	private String direccionDep;
 
-	private Boolean estado;
+	@Column(name="estado_dep")
+	private Boolean estadoDep;
 
-	@Column(name="fecha_nac_dep", length=20)
-	private String fechaNacDep;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_nac_dep")
+	private Date fechaNacDep;
 
 	@Column(name="lugar_nac_dep", length=20)
 	private String lugarNacDep;
@@ -50,20 +53,20 @@ public class ModadDeportista implements Serializable {
 
 	//bi-directional many-to-one association to ModadCategoria
 	@ManyToOne
-	@JoinColumn(name="cod_cate", nullable=false)
+	@JoinColumn(name="cod_cate")
 	private ModadCategoria modadCategoria;
 
 	//bi-directional many-to-one association to ModdepRegistroRendimiento
 	@OneToMany(mappedBy="modadDeportista")
 	private List<ModdepRegistroRendimiento> moddepRegistroRendimientos;
 
-	//bi-directional many-to-one association to ModfinDetallePagoDeportista
-	@OneToMany(mappedBy="modadDeportista")
-	private List<ModfinDetallePagoDeportista> modfinDetallePagoDeportistas;
-
 	//bi-directional many-to-one association to ModmedConsultaMedica
 	@OneToMany(mappedBy="modadDeportista")
 	private List<ModmedConsultaMedica> modmedConsultaMedicas;
+
+	//bi-directional many-to-one association to ModfinDetallePagoJugador
+	@OneToMany(mappedBy="modadDeportista")
+	private List<ModfinDetallePagoJugador> modfinDetallePagoJugadors;
 
 	public ModadDeportista() {
 	}
@@ -108,19 +111,19 @@ public class ModadDeportista implements Serializable {
 		this.direccionDep = direccionDep;
 	}
 
-	public Boolean getEstado() {
-		return this.estado;
+	public Boolean getEstadoDep() {
+		return this.estadoDep;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setEstadoDep(Boolean estadoDep) {
+		this.estadoDep = estadoDep;
 	}
 
-	public String getFechaNacDep() {
+	public Date getFechaNacDep() {
 		return this.fechaNacDep;
 	}
 
-	public void setFechaNacDep(String fechaNacDep) {
+	public void setFechaNacDep(Date fechaNacDep) {
 		this.fechaNacDep = fechaNacDep;
 	}
 
@@ -186,28 +189,6 @@ public class ModadDeportista implements Serializable {
 		return moddepRegistroRendimiento;
 	}
 
-	public List<ModfinDetallePagoDeportista> getModfinDetallePagoDeportistas() {
-		return this.modfinDetallePagoDeportistas;
-	}
-
-	public void setModfinDetallePagoDeportistas(List<ModfinDetallePagoDeportista> modfinDetallePagoDeportistas) {
-		this.modfinDetallePagoDeportistas = modfinDetallePagoDeportistas;
-	}
-
-	public ModfinDetallePagoDeportista addModfinDetallePagoDeportista(ModfinDetallePagoDeportista modfinDetallePagoDeportista) {
-		getModfinDetallePagoDeportistas().add(modfinDetallePagoDeportista);
-		modfinDetallePagoDeportista.setModadDeportista(this);
-
-		return modfinDetallePagoDeportista;
-	}
-
-	public ModfinDetallePagoDeportista removeModfinDetallePagoDeportista(ModfinDetallePagoDeportista modfinDetallePagoDeportista) {
-		getModfinDetallePagoDeportistas().remove(modfinDetallePagoDeportista);
-		modfinDetallePagoDeportista.setModadDeportista(null);
-
-		return modfinDetallePagoDeportista;
-	}
-
 	public List<ModmedConsultaMedica> getModmedConsultaMedicas() {
 		return this.modmedConsultaMedicas;
 	}
@@ -228,6 +209,28 @@ public class ModadDeportista implements Serializable {
 		modmedConsultaMedica.setModadDeportista(null);
 
 		return modmedConsultaMedica;
+	}
+
+	public List<ModfinDetallePagoJugador> getModfinDetallePagoJugadors() {
+		return this.modfinDetallePagoJugadors;
+	}
+
+	public void setModfinDetallePagoJugadors(List<ModfinDetallePagoJugador> modfinDetallePagoJugadors) {
+		this.modfinDetallePagoJugadors = modfinDetallePagoJugadors;
+	}
+
+	public ModfinDetallePagoJugador addModfinDetallePagoJugador(ModfinDetallePagoJugador modfinDetallePagoJugador) {
+		getModfinDetallePagoJugadors().add(modfinDetallePagoJugador);
+		modfinDetallePagoJugador.setModadDeportista(this);
+
+		return modfinDetallePagoJugador;
+	}
+
+	public ModfinDetallePagoJugador removeModfinDetallePagoJugador(ModfinDetallePagoJugador modfinDetallePagoJugador) {
+		getModfinDetallePagoJugadors().remove(modfinDetallePagoJugador);
+		modfinDetallePagoJugador.setModadDeportista(null);
+
+		return modfinDetallePagoJugador;
 	}
 
 }

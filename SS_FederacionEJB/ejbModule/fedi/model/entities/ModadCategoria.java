@@ -35,10 +35,6 @@ public class ModadCategoria implements Serializable {
 	@OneToMany(mappedBy="modadCategoria")
 	private List<ModadHorario> modadHorarios;
 
-	//bi-directional many-to-one association to ModdepRegistroRendimiento
-	@OneToMany(mappedBy="modadCategoria")
-	private List<ModdepRegistroRendimiento> moddepRegistroRendimientos;
-
 	public ModadCategoria() {
 	}
 
@@ -108,28 +104,6 @@ public class ModadCategoria implements Serializable {
 		modadHorario.setModadCategoria(null);
 
 		return modadHorario;
-	}
-
-	public List<ModdepRegistroRendimiento> getModdepRegistroRendimientos() {
-		return this.moddepRegistroRendimientos;
-	}
-
-	public void setModdepRegistroRendimientos(List<ModdepRegistroRendimiento> moddepRegistroRendimientos) {
-		this.moddepRegistroRendimientos = moddepRegistroRendimientos;
-	}
-
-	public ModdepRegistroRendimiento addModdepRegistroRendimiento(ModdepRegistroRendimiento moddepRegistroRendimiento) {
-		getModdepRegistroRendimientos().add(moddepRegistroRendimiento);
-		moddepRegistroRendimiento.setModadCategoria(this);
-
-		return moddepRegistroRendimiento;
-	}
-
-	public ModdepRegistroRendimiento removeModdepRegistroRendimiento(ModdepRegistroRendimiento moddepRegistroRendimiento) {
-		getModdepRegistroRendimientos().remove(moddepRegistroRendimiento);
-		moddepRegistroRendimiento.setModadCategoria(null);
-
-		return moddepRegistroRendimiento;
 	}
 
 }

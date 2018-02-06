@@ -24,21 +24,22 @@ public class ModmedConsultaMedica implements Serializable {
 	@Column(length=500)
 	private String diagnostico;
 
-	private Integer diasrepos;
-
 	@Column(length=5)
 	private String estado;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_realiza_consulata")
-	private Date fechaRealizaConsulata;
+	@Column(name="fecha_consulata")
+	private Date fechaConsulata;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_solicutud_consula")
-	private Date fechaSolicutudConsula;
+	@Column(name="fecha_solicutud")
+	private Date fechaSolicutud;
 
 	@Column(name="nota_medica", length=500)
 	private String notaMedica;
+
+	@Column(length=2)
+	private String resposp;
 
 	//bi-directional many-to-one association to ModadDeportista
 	@ManyToOne
@@ -69,14 +70,6 @@ public class ModmedConsultaMedica implements Serializable {
 		this.diagnostico = diagnostico;
 	}
 
-	public Integer getDiasrepos() {
-		return this.diasrepos;
-	}
-
-	public void setDiasrepos(Integer diasrepos) {
-		this.diasrepos = diasrepos;
-	}
-
 	public String getEstado() {
 		return this.estado;
 	}
@@ -85,20 +78,20 @@ public class ModmedConsultaMedica implements Serializable {
 		this.estado = estado;
 	}
 
-	public Date getFechaRealizaConsulata() {
-		return this.fechaRealizaConsulata;
+	public Date getFechaConsulata() {
+		return this.fechaConsulata;
 	}
 
-	public void setFechaRealizaConsulata(Date fechaRealizaConsulata) {
-		this.fechaRealizaConsulata = fechaRealizaConsulata;
+	public void setFechaConsulata(Date fechaConsulata) {
+		this.fechaConsulata = fechaConsulata;
 	}
 
-	public Date getFechaSolicutudConsula() {
-		return this.fechaSolicutudConsula;
+	public Date getFechaSolicutud() {
+		return this.fechaSolicutud;
 	}
 
-	public void setFechaSolicutudConsula(Date fechaSolicutudConsula) {
-		this.fechaSolicutudConsula = fechaSolicutudConsula;
+	public void setFechaSolicutud(Date fechaSolicutud) {
+		this.fechaSolicutud = fechaSolicutud;
 	}
 
 	public String getNotaMedica() {
@@ -107,6 +100,14 @@ public class ModmedConsultaMedica implements Serializable {
 
 	public void setNotaMedica(String notaMedica) {
 		this.notaMedica = notaMedica;
+	}
+
+	public String getResposp() {
+		return this.resposp;
+	}
+
+	public void setResposp(String resposp) {
+		this.resposp = resposp;
 	}
 
 	public ModadDeportista getModadDeportista() {

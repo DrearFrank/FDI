@@ -2,6 +2,7 @@ package fedi.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -30,21 +31,21 @@ public class ModdepTest implements Serializable {
 	@Column(name="cardio_min_test")
 	private Integer cardioMinTest;
 
-	@Column(name="fecha_test_test")
-	private Integer fechaTestTest;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_tet")
+	private Date fechaTet;
 
 	@Column(name="peso_test")
 	private Integer pesoTest;
+
+	@Column(name="posision_jug", length=50)
+	private String posisionJug;
 
 	@Column(name="rendimiento_fisico_test")
 	private Integer rendimientoFisicoTest;
 
 	@Column(name="velocidad_test")
 	private Integer velocidadTest;
-
-	//bi-directional many-to-one association to ModdepPosicionDeportista
-	@OneToMany(mappedBy="moddepTest")
-	private List<ModdepPosicionDeportista> moddepPosicionDeportistas;
 
 	//bi-directional many-to-one association to ModdepRegistroRendimiento
 	@OneToMany(mappedBy="moddepTest")
@@ -85,12 +86,12 @@ public class ModdepTest implements Serializable {
 		this.cardioMinTest = cardioMinTest;
 	}
 
-	public Integer getFechaTestTest() {
-		return this.fechaTestTest;
+	public Date getFechaTet() {
+		return this.fechaTet;
 	}
 
-	public void setFechaTestTest(Integer fechaTestTest) {
-		this.fechaTestTest = fechaTestTest;
+	public void setFechaTet(Date fechaTet) {
+		this.fechaTet = fechaTet;
 	}
 
 	public Integer getPesoTest() {
@@ -99,6 +100,14 @@ public class ModdepTest implements Serializable {
 
 	public void setPesoTest(Integer pesoTest) {
 		this.pesoTest = pesoTest;
+	}
+
+	public String getPosisionJug() {
+		return this.posisionJug;
+	}
+
+	public void setPosisionJug(String posisionJug) {
+		this.posisionJug = posisionJug;
 	}
 
 	public Integer getRendimientoFisicoTest() {
@@ -117,28 +126,6 @@ public class ModdepTest implements Serializable {
 		this.velocidadTest = velocidadTest;
 	}
 
-	public List<ModdepPosicionDeportista> getModdepPosicionDeportistas() {
-		return this.moddepPosicionDeportistas;
-	}
-
-	public void setModdepPosicionDeportistas(List<ModdepPosicionDeportista> moddepPosicionDeportistas) {
-		this.moddepPosicionDeportistas = moddepPosicionDeportistas;
-	}
-
-	public ModdepPosicionDeportista addModdepPosicionDeportista(ModdepPosicionDeportista moddepPosicionDeportista) {
-		getModdepPosicionDeportistas().add(moddepPosicionDeportista);
-		moddepPosicionDeportista.setModdepTest(this);
-
-		return moddepPosicionDeportista;
-	}
-
-	public ModdepPosicionDeportista removeModdepPosicionDeportista(ModdepPosicionDeportista moddepPosicionDeportista) {
-		getModdepPosicionDeportistas().remove(moddepPosicionDeportista);
-		moddepPosicionDeportista.setModdepTest(null);
-
-		return moddepPosicionDeportista;
-	}
-
 	public List<ModdepRegistroRendimiento> getModdepRegistroRendimientos() {
 		return this.moddepRegistroRendimientos;
 	}
@@ -147,18 +134,5 @@ public class ModdepTest implements Serializable {
 		this.moddepRegistroRendimientos = moddepRegistroRendimientos;
 	}
 
-	public ModdepRegistroRendimiento addModdepRegistroRendimiento(ModdepRegistroRendimiento moddepRegistroRendimiento) {
-		getModdepRegistroRendimientos().add(moddepRegistroRendimiento);
-		moddepRegistroRendimiento.setModdepTest(this);
-
-		return moddepRegistroRendimiento;
-	}
-
-	public ModdepRegistroRendimiento removeModdepRegistroRendimiento(ModdepRegistroRendimiento moddepRegistroRendimiento) {
-		getModdepRegistroRendimientos().remove(moddepRegistroRendimiento);
-		moddepRegistroRendimiento.setModdepTest(null);
-
-		return moddepRegistroRendimiento;
-	}
 
 }

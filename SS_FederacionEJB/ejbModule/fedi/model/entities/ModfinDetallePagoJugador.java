@@ -6,23 +6,20 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the modfin_detalle_pago_deportista database table.
+ * The persistent class for the modfin_detalle_pago_jugador database table.
  * 
  */
 @Entity
-@Table(name="modfin_detalle_pago_deportista")
-@NamedQuery(name="ModfinDetallePagoDeportista.findAll", query="SELECT m FROM ModfinDetallePagoDeportista m")
-public class ModfinDetallePagoDeportista implements Serializable {
+@Table(name="modfin_detalle_pago_jugador")
+@NamedQuery(name="ModfinDetallePagoJugador.findAll", query="SELECT m FROM ModfinDetallePagoJugador m")
+public class ModfinDetallePagoJugador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MODFIN_DETALLE_PAGO_DEPORTISTA_CODDETALLERDEPORTISTA_GENERATOR", sequenceName="SEQ_MODFIN_DETALLE_PAGO_DEPORTISTA",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODFIN_DETALLE_PAGO_DEPORTISTA_CODDETALLERDEPORTISTA_GENERATOR")
-	@Column(name="cod_detaller_deportista", unique=true, nullable=false)
-	private Integer codDetallerDeportista;
-
-	@Column(name="cedula_us")
-	private Integer cedulaUs;
+	@SequenceGenerator(name="MODFIN_DETALLE_PAGO_JUGADOR_CODDETALLEREGRESO_GENERATOR", sequenceName="SEQ_MODFIN_DETALLE_PAGO_JUGADOR",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODFIN_DETALLE_PAGO_JUGADOR_CODDETALLEREGRESO_GENERATOR")
+	@Column(name="cod_detaller_egreso", unique=true, nullable=false)
+	private Integer codDetallerEgreso;
 
 	private Integer descuentos;
 
@@ -38,30 +35,22 @@ public class ModfinDetallePagoDeportista implements Serializable {
 	private String observacion;
 
 	@Column(name="pago_total")
-	private Integer pagoTotal;
+	private double pagoTotal;
 
 	//bi-directional many-to-one association to ModadDeportista
 	@ManyToOne
 	@JoinColumn(name="cedula_dep")
 	private ModadDeportista modadDeportista;
 
-	public ModfinDetallePagoDeportista() {
+	public ModfinDetallePagoJugador() {
 	}
 
-	public Integer getCodDetallerDeportista() {
-		return this.codDetallerDeportista;
+	public Integer getCodDetallerEgreso() {
+		return this.codDetallerEgreso;
 	}
 
-	public void setCodDetallerDeportista(Integer codDetallerDeportista) {
-		this.codDetallerDeportista = codDetallerDeportista;
-	}
-
-	public Integer getCedulaUs() {
-		return this.cedulaUs;
-	}
-
-	public void setCedulaUs(Integer cedulaUs) {
-		this.cedulaUs = cedulaUs;
+	public void setCodDetallerEgreso(Integer codDetallerEgreso) {
+		this.codDetallerEgreso = codDetallerEgreso;
 	}
 
 	public Integer getDescuentos() {
@@ -96,11 +85,11 @@ public class ModfinDetallePagoDeportista implements Serializable {
 		this.observacion = observacion;
 	}
 
-	public Integer getPagoTotal() {
+	public double getPagoTotal() {
 		return this.pagoTotal;
 	}
 
-	public void setPagoTotal(Integer pagoTotal) {
+	public void setPagoTotal(double pagoTotal) {
 		this.pagoTotal = pagoTotal;
 	}
 

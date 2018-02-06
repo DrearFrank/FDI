@@ -2,6 +2,7 @@ package fedi.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,10 +32,12 @@ public class ModadUsuario implements Serializable {
 	@Column(name="direccion_us", length=100)
 	private String direccionUs;
 
-	private Boolean estado;
+	@Column(name="estado_us")
+	private Boolean estadoUs;
 
-	@Column(name="fecha_nac_us", length=20)
-	private String fechaNacUs;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_nac_us")
+	private Date fechaNacUs;
 
 	@Column(name="lugar_nac_us", length=20)
 	private String lugarNacUs;
@@ -52,10 +55,6 @@ public class ModadUsuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="cod_roles")
 	private ModadRole modadRole;
-
-	//bi-directional many-to-one association to ModdepPosicionDeportista
-	@OneToMany(mappedBy="modadUsuario")
-	private List<ModdepPosicionDeportista> moddepPosicionDeportistas;
 
 	//bi-directional many-to-one association to ModfinDetallePagoUsuario
 	@OneToMany(mappedBy="modadUsuario")
@@ -108,19 +107,19 @@ public class ModadUsuario implements Serializable {
 		this.direccionUs = direccionUs;
 	}
 
-	public Boolean getEstado() {
-		return this.estado;
+	public Boolean getEstadoUs() {
+		return this.estadoUs;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setEstadoUs(Boolean estadoUs) {
+		this.estadoUs = estadoUs;
 	}
 
-	public String getFechaNacUs() {
+	public Date getFechaNacUs() {
 		return this.fechaNacUs;
 	}
 
-	public void setFechaNacUs(String fechaNacUs) {
+	public void setFechaNacUs(Date fechaNacUs) {
 		this.fechaNacUs = fechaNacUs;
 	}
 
@@ -162,28 +161,6 @@ public class ModadUsuario implements Serializable {
 
 	public void setModadRole(ModadRole modadRole) {
 		this.modadRole = modadRole;
-	}
-
-	public List<ModdepPosicionDeportista> getModdepPosicionDeportistas() {
-		return this.moddepPosicionDeportistas;
-	}
-
-	public void setModdepPosicionDeportistas(List<ModdepPosicionDeportista> moddepPosicionDeportistas) {
-		this.moddepPosicionDeportistas = moddepPosicionDeportistas;
-	}
-
-	public ModdepPosicionDeportista addModdepPosicionDeportista(ModdepPosicionDeportista moddepPosicionDeportista) {
-		getModdepPosicionDeportistas().add(moddepPosicionDeportista);
-		moddepPosicionDeportista.setModadUsuario(this);
-
-		return moddepPosicionDeportista;
-	}
-
-	public ModdepPosicionDeportista removeModdepPosicionDeportista(ModdepPosicionDeportista moddepPosicionDeportista) {
-		getModdepPosicionDeportistas().remove(moddepPosicionDeportista);
-		moddepPosicionDeportista.setModadUsuario(null);
-
-		return moddepPosicionDeportista;
 	}
 
 	public List<ModfinDetallePagoUsuario> getModfinDetallePagoUsuarios() {

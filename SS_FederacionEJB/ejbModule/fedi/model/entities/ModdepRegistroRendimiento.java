@@ -2,6 +2,7 @@ package fedi.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -34,26 +35,16 @@ public class ModdepRegistroRendimiento implements Serializable {
 	@Column(name="rendimiento_fisico_dep", length=100)
 	private String rendimientoFisicoDep;
 
-	@Column(name="sancion_dep")
-	private Integer sancionDep;
-
-	//bi-directional many-to-one association to ModadCategoria
-	@ManyToOne
-	@JoinColumn(name="cod_cate")
-	private ModadCategoria modadCategoria;
+	@Column(name="sancion_dep", precision=131089)
+	private BigDecimal sancionDep;
 
 	//bi-directional many-to-one association to ModadDeportista
 	@ManyToOne
 	@JoinColumn(name="cedula_dep")
 	private ModadDeportista modadDeportista;
 
-	//bi-directional many-to-one association to ModdepPosicionDeportista
-	@ManyToOne
-	@JoinColumn(name="cod_posicion")
-	private ModdepPosicionDeportista moddepPosicionDeportista;
-
 	//bi-directional many-to-one association to ModdepTest
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
 	@JoinColumn(name="cod_test")
 	private ModdepTest moddepTest;
 
@@ -100,20 +91,12 @@ public class ModdepRegistroRendimiento implements Serializable {
 		this.rendimientoFisicoDep = rendimientoFisicoDep;
 	}
 
-	public Integer getSancionDep() {
+	public BigDecimal getSancionDep() {
 		return this.sancionDep;
 	}
 
-	public void setSancionDep(Integer sancionDep) {
+	public void setSancionDep(BigDecimal sancionDep) {
 		this.sancionDep = sancionDep;
-	}
-
-	public ModadCategoria getModadCategoria() {
-		return this.modadCategoria;
-	}
-
-	public void setModadCategoria(ModadCategoria modadCategoria) {
-		this.modadCategoria = modadCategoria;
 	}
 
 	public ModadDeportista getModadDeportista() {
@@ -122,14 +105,6 @@ public class ModdepRegistroRendimiento implements Serializable {
 
 	public void setModadDeportista(ModadDeportista modadDeportista) {
 		this.modadDeportista = modadDeportista;
-	}
-
-	public ModdepPosicionDeportista getModdepPosicionDeportista() {
-		return this.moddepPosicionDeportista;
-	}
-
-	public void setModdepPosicionDeportista(ModdepPosicionDeportista moddepPosicionDeportista) {
-		this.moddepPosicionDeportista = moddepPosicionDeportista;
 	}
 
 	public ModdepTest getModdepTest() {

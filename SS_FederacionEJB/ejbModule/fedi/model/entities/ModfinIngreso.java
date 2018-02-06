@@ -27,7 +27,7 @@ public class ModfinIngreso implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	private Integer valor;
+	private double valor;
 
 	//bi-directional many-to-one association to ModfinDetalleIngreso
 	@ManyToOne
@@ -61,11 +61,11 @@ public class ModfinIngreso implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public Integer getValor() {
+	public double getValor() {
 		return this.valor;
 	}
 
-	public void setValor(Integer valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 

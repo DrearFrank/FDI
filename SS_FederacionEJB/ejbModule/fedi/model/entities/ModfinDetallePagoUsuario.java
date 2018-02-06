@@ -16,10 +16,10 @@ public class ModfinDetallePagoUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MODFIN_DETALLE_PAGO_USUARIOS_CODDETALLERUSUARIO_GENERATOR", sequenceName="SEQ_MODFIN_DETALLE_PAGO_USUARIOS",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODFIN_DETALLE_PAGO_USUARIOS_CODDETALLERUSUARIO_GENERATOR")
-	@Column(name="cod_detaller_usuario", unique=true, nullable=false)
-	private Integer codDetallerUsuario;
+	@SequenceGenerator(name="MODFIN_DETALLE_PAGO_USUARIOS_CODDETALLEREGRESO_GENERATOR", sequenceName="SEQ_MODFIN_DETALLE_PAGO_USUARIOS",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MODFIN_DETALLE_PAGO_USUARIOS_CODDETALLEREGRESO_GENERATOR")
+	@Column(name="cod_detaller_egreso", unique=true, nullable=false)
+	private Integer codDetallerEgreso;
 
 	private Integer descuentos;
 
@@ -35,7 +35,7 @@ public class ModfinDetallePagoUsuario implements Serializable {
 	private String observacion;
 
 	@Column(name="pago_total")
-	private Integer pagoTotal;
+	private double pagoTotal;
 
 	//bi-directional many-to-one association to ModadUsuario
 	@ManyToOne
@@ -45,12 +45,12 @@ public class ModfinDetallePagoUsuario implements Serializable {
 	public ModfinDetallePagoUsuario() {
 	}
 
-	public Integer getCodDetallerUsuario() {
-		return this.codDetallerUsuario;
+	public Integer getCodDetallerEgreso() {
+		return this.codDetallerEgreso;
 	}
 
-	public void setCodDetallerUsuario(Integer codDetallerUsuario) {
-		this.codDetallerUsuario = codDetallerUsuario;
+	public void setCodDetallerEgreso(Integer codDetallerEgreso) {
+		this.codDetallerEgreso = codDetallerEgreso;
 	}
 
 	public Integer getDescuentos() {
@@ -85,11 +85,11 @@ public class ModfinDetallePagoUsuario implements Serializable {
 		this.observacion = observacion;
 	}
 
-	public Integer getPagoTotal() {
+	public double getPagoTotal() {
 		return this.pagoTotal;
 	}
 
-	public void setPagoTotal(Integer pagoTotal) {
+	public void setPagoTotal(double pagoTotal) {
 		this.pagoTotal = pagoTotal;
 	}
 

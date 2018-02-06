@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fedi.model.manager.ManagerAdministrador;
-import fedi.model.entities.ModadRole;
+import fedi.model.entities.ModadRole;;
 
 @ManagedBean
 @SessionScoped
