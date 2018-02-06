@@ -25,6 +25,7 @@ public class beanlugar {
 
 	}
 
+
 	public String actionInsertarLugar() {
 		LugarEntrenamientoDepor p = new LugarEntrenamientoDepor();
 		p.setCodLugar(codLugar);
@@ -96,5 +97,48 @@ public class beanlugar {
 
 	
 
+	public ManagerAdmin getManageradmin() {
+		return manageradmin;
+	}
+
+	public void setManageradmin(ManagerAdmin manageradmin) {
+		this.manageradmin = manageradmin;
+	}
+
+	public String getCodLugar() {
+		return codLugar;
+	}
+
+	public void setCodLugar(String codLugar) {
+		this.codLugar = codLugar;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setListalug(List<LugarEntrenamientoDepor> listalug) {
+		this.listalug = listalug;
+	}
 
 }
