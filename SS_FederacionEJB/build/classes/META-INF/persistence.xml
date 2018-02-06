@@ -2,6 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="fediDS" transaction-type="JTA">
 		<jta-data-source>java:/fediDS</jta-data-source>
+<<<<<<< HEAD
 		<class>fedi.model.entities.ModadCategoria</class>
 		<class>fedi.model.entities.ModadDeportista</class>
 		<class>fedi.model.entities.ModadHorario</class>
@@ -15,5 +16,24 @@
 		<class>fedi.model.entities.ModfinDetallePagoUsuario</class>
 		<class>fedi.model.entities.ModfinIngreso</class>
 		<class>fedi.model.entities.ModmedConsultaMedica</class>
+=======
+		<class>fedim.model.entities.Categoria</class>
+		<class>fedim.model.entities.ConsultaMedica</class>
+		<class>fedim.model.entities.Deportista</class>
+		<class>fedim.model.entities.DetalleIngreso</class>
+		<class>fedim.model.entities.DetallePagoDeportista</class>
+		<class>fedim.model.entities.DetallePagoUsuario</class>
+		<class>fedim.model.entities.Egreso</class>
+		<class>fedim.model.entities.Evento</class>
+		<class>fedim.model.entities.Ingreso</class>
+		<class>fedim.model.entities.LugarEntrenamientoDepor</class>
+		<class>fedim.model.entities.Parametro</class>
+		<class>fedim.model.entities.Parametromedico</class>
+		<class>fedim.model.entities.SeguimientodepCab</class>
+		<class>fedim.model.entities.Test</class>
+		<class>fedim.model.entities.TestDet</class>
+		<class>fedim.model.entities.TipoEgreso</class>
+		<class>fedim.model.entities.Usuario</class>
+>>>>>>> e85e9ce1832e8efd39f4296faab76e251824db02
 	</persistence-unit>
 </persistence>
