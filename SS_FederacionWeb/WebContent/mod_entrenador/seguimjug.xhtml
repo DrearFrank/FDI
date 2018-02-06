@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+
+	<h:form>
+		<p:commandButton value="Regresar al Menú" action="menu"></p:commandButton>
+	</h:form>
+
+	<p:panel header="Control de jugador">
+		<p:messages autoUpdate="true"></p:messages>
+		<br></br>
+
+				<p:panelGrid columns="3">
+		
+		
+		
+				<h:form>
+			<p:panelGrid columns="2">
+
+				<h:outputText value="Seleccione el jugador:" />
+				<h:panelGroup>
+					<p:selectOneMenu value="#{controllerSegJug.cedDep}">
+						<f:selectItem itemLabel="Seleccione..." itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{controllerSegJug.listaJugadoresSI}" />
+						<p:ajax update="cedulaDep"></p:ajax>
+
+
+
+					</p:selectOneMenu>
+				</h:panelGroup>
+				<h:outputText value="Codigo del Jugador:" style="font-weight: bold" />
+				<h:outputText id="cedulaDep" value="#{controllerSegJug.cedDep}" />
+
+
+
+				<h:outputText value="Estado del Jugador:" style="font-weight: bold" />
+				<h:outputText id="estado" value="#{controllerSegJug.estado}" />
+
+				<h:outputText value="Categoria" />
+				<p:inputText value="" required="true" />
+
+
+
+
+				<h:outputText value="SANSION" />
+				<p:spinner value="" max="30" min="1" />
+
+
+<br></br>
+			</p:panelGrid>
+			<p:panelGrid columns="3">
+<h:outputText value="TIPO TEST" /><br></br>
+				<p:inputText value="" required="true" />
+				<h:outputText value="% Rendimiento Fisico" />
+				<p:inputText value="" required="true" />
+				 <p:commandButton value="Agregar"></p:commandButton>
+				
+
+			</p:panelGrid>
+			<br></br>
+
+			<p:commandButton value="Registrar"></p:commandButton>
+
+			<p:messages autoUpdate="true"></p:messages>
+
+
+
+		</h:form>
+
+
+
+		</p:panelGrid>
+		
+		<br></br>
+		
+		
+			<h:form id="form2">
+			<p:dataTable value="" var="" id="tabla1">
+				<p:column headerText="Cod_registro">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="NOMBRE">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="APELLIDO">
+					<h:outputText value="" />
+				</p:column>
+			
+						<p:column headerText="POSISION">
+					<h:outputText value="" />
+				</p:column>
+				
+			
+				<p:column headerText="TIPOTEST">
+					<h:outputText value="" />
+				</p:column>
+						<p:column headerText="INDICEVALOR">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="RENDIMEINTO FISICO">
+					<h:outputText value="" />
+				</p:column>
+				
+						<p:column headerText="SUBTOTALPORCENTAJE">
+					<h:outputText value="" />
+				</p:column>
+				
+
+		
+
+
+
+			</p:dataTable>
+
+			<p:commandButton value="RESET" icon="ui-icon-refresh"
+				update="@form,:form2:tabla1"
+				actionListener="#{controllerRol.actionListenerReset()}">
+			</p:commandButton>
+
+		</h:form>
+
+
+
+
+
+
+	</p:panel>
+</body>
+</html>
+
+
+
+
+
+

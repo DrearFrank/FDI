@@ -16,7 +16,7 @@ public class ManagerMedico {
 	@EJB
 	private ManagerDAO managerDAO;
 	@EJB
-	private ManagerAdmin managerAdmin;
+	private ManagerSeguimiento managerSeguimiento;
 	public ManagerMedico() {
 		// TODO Auto-generated constructor stub
 	}

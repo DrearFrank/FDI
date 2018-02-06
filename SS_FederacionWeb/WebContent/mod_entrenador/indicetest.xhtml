@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<div align="right">
+		<h:form aling="left">
+			<p:commandButton value="Regresar al inicio" action="menu"></p:commandButton>
+		</h:form>
+	</div>
+	<p:panel header="Indice TESTS">
+		<p:messages autoUpdate="true"></p:messages>
+		<h:panelGrid columns="2">
+		
+		
+		
+				<h:form id="form1">
+			<p:panel header="Registro Indices Test">
+				<p:panelGrid columns="3">
+					<h:outputText value="cod_test" />
+					<p:inputText value="#{controllertest.codTest}" required="true"
+						requiredMessage="Especifique Cod Test" />
+						<br/>
+						
+					<h:outputText value="Promedio Peso" />
+					<p:spinner value="#{controllertest.pesotest}" max="20"
+						min="1" /> %
+						
+					<h:outputText value="Promedio Altura" />
+					<p:spinner value="#{controllertest.altura}" max="20"
+						min="1" />%
+						
+					<h:outputText value="Promedio Velocidad" />
+					<p:spinner value="#{controllertest.velocidad}" max="20"
+						min="1" />%
+						
+						<h:outputText value="Promedio Cardio/min" />
+					<p:spinner value="#{controllertest.cardioxmintes}" max="20"
+						min="1" />%
+						
+						<h:outputText value="Promedio Abdominales/min" />
+					<p:spinner value="#{controllertest.abdomxmin}" max="20"
+						min="1" />%
+						
+						<h:outputText value="Promedio Total Rendimiento" />
+				<p:inputText value="#{controllertest.rendimeintotest}" required="true"
+						requiredMessage="Especifique Promedio  Test" />
+						<br/>
+						
+					<h:outputText value="Posision Jugador:" />
+			<h:selectOneMenu value="#{controllertest.posision}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+				<f:selectItem itemValue="delantero" itemLabel="delantero" />
+				<f:selectItem itemValue="defensa" itemLabel="defensa" />	
+				<f:selectItem itemValue="volanteDerecho" itemLabel="volanteDerecho" />
+				<f:selectItem itemValue="VolanteIzquierdo" itemLabel="VolanteIzquierdo" />
+				<f:selectItem itemValue="MedioCampista" itemLabel="MedioCampista" />	
+				<f:selectItem itemValue="Central" itemLabel="Central" />
+					
+
+			</h:selectOneMenu>
+					
+					<p:commandButton value="Agregar" icon="ui-icon-disk"
+						update="@form,:form2:tabla1"
+						actionListener="#{controllertest.actionListenerAgregaTest()}">
+					</p:commandButton>
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+		
+		
+		
+		
+		
+		
+		
+		
+			<h:form id="form2">
+				<p:dataTable value="#{controllertest.listest}" var="t" id="tabla1">
+					<p:column headerText="Cod_test">
+						<h:outputText value="#{t.codTest}" />
+					</p:column>
+
+					<p:column headerText="Peso">
+						<h:outputText value="#{t.pesoTest}" />
+					</p:column>
+					<p:column headerText="Altura">
+						<h:outputText value="#{t.alturaTest}" />
+					</p:column>
+
+					<p:column headerText="Velocidad">
+						<h:outputText value="#{t.velocidadTest}" />
+					</p:column>
+					<p:column headerText="Cardio/min">
+						<h:outputText value="#{t.cardioMinTest}" />
+					</p:column>
+					<p:column headerText="Abdominales/min">
+						<h:outputText value="#{t.abdominalesMinTest}" />
+					</p:column>
+					<p:column headerText="TotalRendimeinto">
+						<h:outputText value="#{t.rendimientoFisicoTest}" />
+					</p:column>
+
+					<p:column headerText="Posision">
+						<h:outputText value="#{t.posisionJug}" />
+					</p:column>
+
+
+
+
+				</p:dataTable>
+
+				<p:commandButton value="RESET" icon="ui-icon-refresh"
+					update="@form,:form2:tabla1"
+					actionListener="#{controllerRol.actionListenerReset()}">
+				</p:commandButton>
+
+			</h:form>
+
+
+
+		</h:panelGrid>
+
+	</p:panel>
+</body>
+</html>
